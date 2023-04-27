@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Wrapper } from "./Wrapper";
 
 import Logo from "../public/logo.svg";
@@ -12,9 +12,34 @@ export function Header() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
   const [show, setShow] = useState("transelate-y-0");
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > 200) {
+      if (currentScrollY > lastScrollY && mobileMenu) {
+        setShow("translate-y-[calc(-100%-12px)]");
+      } else {
+        setShow("shadow-sm translate-y-0");
+      }
+
+      setShow("-translate-y-full");
+    } else {
+      setShow("translate-y-0");
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <div
+    <header
       className={`
         w-full h-12 md:h-20 bg-zinc-100 flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}
     `}
@@ -72,6 +97,6 @@ export function Header() {
           </div>
         </div>
       </Wrapper>
-    </div>
+    </header>
   );
 }
