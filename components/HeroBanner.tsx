@@ -5,6 +5,7 @@ import Image from "next/image";
 import Slide1 from "../public/slide-1.png";
 import Slide2 from "../public/slide-2.png";
 import Slide3 from "../public/slide-3.png";
+import { CaretLeft, CaretRight } from "phosphor-react";
 
 export function HeroBanner() {
   return (
@@ -12,6 +13,7 @@ export function HeroBanner() {
       <Carousel
         showThumbs={false}
         showStatus={false}
+        showIndicators={false}
         infiniteLoop={true}
         autoPlay={true}
         interval={4000}
@@ -19,6 +21,34 @@ export function HeroBanner() {
         swipeable={true}
         emulateTouch={true}
         animationHandler={"fade"}
+        renderArrowNext={(onClickHandler, hasNext, label) => (
+          <button
+            type="button"
+            onClick={onClickHandler}
+            title={label}
+            className="absolute bottom-0 right-5 z-10 transform -translate-y-1/2 text-zinc-900/50 hover:text-zinc-900/80 transition-colors duration-200 focus:outline-none"
+          >
+            <CaretRight
+              size={20}
+              weight="bold"
+              className="text-zinc-900/50 hover:text-zinc-900/80 transition-colors duration-200"
+            />
+          </button>
+        )}
+        renderArrowPrev={(onClickHandler, hasPrev, label) => (
+          <button
+            type="button"
+            onClick={onClickHandler}
+            title={label}
+            className="absolute mx-5 bottom-0 right-5 z-10 transform -translate-y-1/2 text-zinc-900/50 hover:text-zinc-900/80 transition-colors duration-200 focus:outline-none"
+          >
+            <CaretLeft
+              size={20}
+              weight="bold"
+              className="text-zinc-900/50 hover:text-zinc-900/80 transition-colors duration-200"
+            />
+          </button>
+        )}
       >
         <div>
           <Image
