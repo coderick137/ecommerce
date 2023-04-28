@@ -92,7 +92,7 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="text-[12px] text-white/50 hover:text-white3cursor-pointer text-center md:text-left">
+          <div className="text-[12px] text-white/50 hover:text-white cursor-pointer text-center md:text-left">
             Feito com ❤️ por{" "}
             <a
               href="https://www.linkedin.com/in/ricardoanjosn/"
