@@ -28,7 +28,7 @@ export function MobileMenu({
   setMobileMenu,
 }: SubMenuProps) {
   return (
-    <ul className="flex flec-col md:hidden font-bold absolute top-12 left-0 w-full h-[calc(100vh-58px)] bg-zinc-50 border-t text-zinc-900">
+    <ul className="flex flex-col sm:hidden font-bold absolute top-12 left-0 w-full h-[calc(100vh-58px)] bg-zinc-50 border-t text-zinc-900">
       {data.map((item) => {
         return (
           <Fragment key={item.id}>
